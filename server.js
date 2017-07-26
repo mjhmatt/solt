@@ -11,10 +11,14 @@ var router = require('./routes/salesRoutes');
 router(app);
 
 /*
-* Middleware if link isn't found
+* Middleware if link isn't found or bad request
 */
 app.use(function(req, res) {
   res.status(404).send({url: req.originalUrl + ' not found'})
+});
+
+app.use(function(req, res) {
+  res.status(500).send({url: req.originalUrl + ' bad request'})
 });
 
 app.listen(port);
