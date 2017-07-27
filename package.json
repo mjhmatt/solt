@@ -3,14 +3,20 @@
   "version": "1.0.0",
   "description": "solt task for node",
   "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "mjhmatt",
   "license": "ISC",
   "dependencies": {
     "express": "^4.15.3",
     "fast-csv" : "*",
-    "apidoc" : "*"
-  }
+    "apidoc" : "*   "
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "mocha": "^2.4.5"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "mocha --timeout 10000"
+  } 
 }

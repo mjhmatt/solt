@@ -17,10 +17,13 @@ app.use(function(req, res) {
   res.status(404).send({url: req.originalUrl + ' not found'})
 });
 
-app.use(function(req, res) {
-  res.status(500).send({url: req.originalUrl + ' bad request'})
-});
+app.use(function (err, req, res, next) {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
 
 app.listen(port);
 
 console.log('API running on port ' + port);
+
+module.exports = app; // for testing

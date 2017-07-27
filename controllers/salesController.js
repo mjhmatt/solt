@@ -1,16 +1,16 @@
 csvService = require('../services/csvService');
 
-exports.list_all_sales = function(req, res) {
+exports.list_all_sales = function(err, res) {
 
-
+	console.log(err);
 	csvService.pullCsvData('./data/realestatetransactions.csv',function(response){
 		var sales1 = response;
 
 		csvService.pullCsvData('./data/SalesJan2009.csv',function(response){
 
 			var sales2 = sales1.concat(response);
-			var promise = cloneAndPluck(sales2, ["price","city","state","transaction_date","latitude","longitude"],function(ta){
-				res.json(ta);
+			var getColumns = cloneAndPluck(sales2, ["price","city","state","transaction_date","latitude","longitude"],function(obj){
+				res.json(obj);
 			});
 
 		});
@@ -18,6 +18,13 @@ exports.list_all_sales = function(req, res) {
 
 };
 
+/**
+ * Function to get specific data which is passed by an array of strings
+ * @param  {Object}
+ * @param  {[array] - array of strings of keys wished to be used }
+ * @param  {callback}
+ * @return {[array]}
+ */
 var cloneAndPluck = function(sourceObject, keys,callback) {
     
     var newArray = [];

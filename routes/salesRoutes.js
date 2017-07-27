@@ -18,7 +18,7 @@ module.exports = function(app) {
  *      "city": "Leeds",
  *      "state": "Yorkshire"
  *      "latitude": "3.7778162",
- *      "longitude": "2-1.574333"
+ *      "longitude": "-1.574333"
  *    }]
  * @apiErrorExample {json} List error
  *    HTTP/1.1 500 Internal Server Error
